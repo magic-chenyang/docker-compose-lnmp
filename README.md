@@ -31,9 +31,3 @@ For more operations to containers, please refer to:
 Check out your https://\<docker-host\> and have fun :beer:
 
 
-
-### License
-
-MIT
-
-  [1]: architecture.png

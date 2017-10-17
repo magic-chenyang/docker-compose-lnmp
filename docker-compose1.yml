@@ -1,0 +1,39 @@
+version: '2'
+services:
+  # web server
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+    # app
+      - ./app/src:/usr/share/nginx/html
+    # nginx configs
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d/:/etc/nginx/conf.d/:ro
+    
+  
+  # php-fpm
+  fpm:
+    image: registry.cn-beijing.aliyuncs.com/sirius_yangchen/php-fpm:v1
+    ports:
+      - "9000"
+    volumes:
+      - ./app/src:/usr/share/nginx/html
+    # Your php.ini
+      - ./php-fpm/php.ini-production:/usr/local/etc/php/php.ini:ro
+  
+    
+
+# database
+  mysql:
+    image: mysql:latest
+    ports:
+      # Allow client to access 3306
+      - "3306:3306"
+    volumes:
+      # NOTE: your data will be stored in ./mysql
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=your_mysql_password

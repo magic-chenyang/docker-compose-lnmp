@@ -18,7 +18,7 @@ services:
   fpm:
     image: registry.cn-beijing.aliyuncs.com/sirius_yangchen/php-fpm:v1
     ports:
-      - "9000"
+      - "9000:9000"
     volumes:
       - ./app/src:/usr/share/nginx/html
     # Your php.ini

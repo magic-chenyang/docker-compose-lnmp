@@ -16,7 +16,7 @@ services:
   
   # php-fpm
   fpm:
-    image: registry.cn-beijing.aliyuncs.com/sirius_yangchen/php-fpm:latest
+    image: registry.cn-beijing.aliyuncs.com/sirius_yangchen/php-fpm:v1
     ports:
       - "9000"
     volumes:
